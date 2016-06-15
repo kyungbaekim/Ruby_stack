@@ -1,0 +1,25 @@
+<div class='wrapper'>
+  <div class='title'>
+    <h1>Welcome to the Great Number Game!</h1>
+    <P>I am thinking of a number between 1 and 100<br>
+    Take a guess!</p>
+  </div>
+
+  <% if flash[:flag] == 'good' %>
+    <div class='good'>
+      <br><br><br><br><h1 class='good_message'><%= flash[:message] %></h1>
+      <a href='/new'><button>Play again!</button></a>
+    </div>
+  <% elsif flash[:flag] == 'bad' %>
+    <div class='bad'>
+      <br><br><br><br><br><h1 class='bad_message'><%= flash[:message] %></h1>
+    </div>
+  <% end %>
+
+  <div class='guess'>
+    <form action='/guess' method='post'>
+      <input type='hidden' name='authenticity_token'>
+      <input type='type' name='guess'><br>
+      <input type='submit' value='Submit'>
+    </form>
+</div>

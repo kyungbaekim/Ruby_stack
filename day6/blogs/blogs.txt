@@ -1,0 +1,9 @@
+1. Blog.create name:"Test1", description:"Test1"...
+2. Post.create([{blog: Blog.find(7), title:"Title1...", content:"Content1..."}, {blog: Blog.find(7), title:"Title2...", content:"Content2..."}, {blog: Blog.find(7), title:"Title3...", content:"Content3..."}, {blog: Blog.find(7), title:"Title4...", content:"Content4..."}, {blog: Blog.find(7), title:"Title5...", content:"Content5..."}, {blog: Blog.find(7), title:"Title6...", content:"Content6..."}, {blog: Blog.find(7), title:"Title7...", content:"Content7..."}])
+3. Message.create([{post: Post.find(1), author:"KB", message:"This is a test message #1"}, {post: Post.find(1), author:"KB", message:"This is a test message #2"}, {post: Post.find(1), author:"KB", message:"This is a test message #3"}, {post: Post.find(1), author:"KB", message:"This is a test message #4"}, {post: Post.find(1), author:"KB", message:"This is a test message #5"}, {post: Post.find(1), author:"KB", message:"This is a test message #6"}, {post: Post.find(1), author:"KB", message:"This is a test message #7"}])
+4. Blog.first.posts
+5. Blog.last.posts.order(title: :desc)
+6. Post.first.update(title:"Title1+1")
+7. Post.find(4).destroy
+8. Blog.all
+9. Blog.where{id < 5}

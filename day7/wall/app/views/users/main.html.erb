@@ -1,0 +1,43 @@
+<div class='wrapper'>
+  <div class='content'>
+    <div class='top_menu'>
+      <div class='welcome'>
+        <h3>Welcome <%= session[:user_name] %>!!!</h3>
+      </div>
+      <div class='logout'>
+        <a href='/logout'>Log out</a>
+      </div>
+    </div>
+    <div class='subcontent'>
+      <div class='add_post'>
+        <form action='/add_post' method='post'>
+          <input name='authenticity_token' type='hidden'>
+          <textarea name='post'></textarea><br>
+          <input type='submit' value='Add post'>
+        </form>
+      </div>
+      <div class='display'>
+        <% if @post_data %>
+          <% @post_data.each do |post| %>
+            <span class='post'><b><%= post[:post] %></b></span><br>
+            <span class='post'><%= post[:poster] %> left post on <%= post[:created_at] %></span><br><br>
+            <% @comment_data.each do |c| %>
+              <% if c[:post_id] == post[:post_id] %>
+                <span class='comment'><u><%= c[:comment] %></u></span><br>
+                <span class='comment'><%= c[:commenter] %> commented on <%= c[:created_at] %></span><br><br>
+              <% end %>
+            <% end %>
+            <div class='sub_display'>
+              <form action='/add_comment' method='post'>
+                <input name='post_id' type='hidden' value='<%= post[:post_id] %>'>
+                <input name='authenticity_token' type='hidden'>
+                <textarea name='comment'></textarea><br>
+                <input type='submit' value='Add comment'>
+              </form>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

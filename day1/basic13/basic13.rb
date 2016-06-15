@@ -62,6 +62,7 @@ getNumberofValues(x, num)
 # Square the values
 def squreValues(arr)
   arr.map! {|num| num ** 2}
+  arr.collect! {|num| num * num}
   puts arr.to_s
 end
 squreValues(x)

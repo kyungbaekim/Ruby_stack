@@ -1,0 +1,19 @@
+1. rails new user_login_project
+2. rails g model User first_name:string last_name:string email_address:string age:integer
+   rake db:migrate
+4. User.create((first_name:"Tyler", last_name:"Nguyen", email_address:"tyler@ngyuen.com", age:28)
+   User.create((first_name:"John", last_name:"Kim", email_address:"johnkim@samsung.com", age:33)
+   User.create(first_name:"Michael", last_name:"Choi", email_address:"mchoi@codingdojo.com", age:36)
+   User.create(first_name:"Mike", last_name:"Hannon", email_address:"mhannon@codingdojo.com", age:44)
+   User.create(first_name:"Kyungbae", last_name:"Kim", email_address:"kyungbaekim@samsung.com", age:36)
+
+8.1
+8.2
+8.3 User.all
+8.4 User.first
+8.5 User.last
+8.6 User.order(first_name: :desc)
+8.7 user1= User.find(3) => user1.update(last_name: "Kim") => user1.save
+8.8 User.find(4).destroy
+
+User.create([{name:"Kyungbae"}, {name:"Tyler"}, {name:"Mike"},{name:"Kris"}, {name:"David"}])

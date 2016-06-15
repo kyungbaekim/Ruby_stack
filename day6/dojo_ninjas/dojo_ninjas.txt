@@ -1,0 +1,26 @@
+1. rails new dojo_ninjas
+2. rails g model dojos name:string city:string state:string
+   rake db:migrate
+   rails g model ninjas first_name:string last_name:string dojo_id:references
+   rake db:migrate
+3. Dojo.create(name:"CodingDojo Silicon Valley", city:"Mountain View", state:"CA")
+   Dojo.create(name:"CodingDojo Seattle", city:"Seattle", state:"WA")
+   Dojo.create(name:"CodingDojo New York", city:"New York", state:"NY")
+6.1 Dojo.find(1).destroy
+    Dojo.destroy_all
+6.2 dojo1 = Dojo.new(name:"CodingDojo Silicon Valley", city:"Mountain View", state:"CA")
+    dojo2 = Dojo.new(name:"CodingDojo Seattle", city:"Seattle", state:"WA")
+    dojo3 = Dojo.new(name:"CodingDojo New York", city:"New York", state:"NY")
+6.4 Ninja.create(first_name:"Kyungbae", last_name:"Kim", dojo_id:1)
+    Ninja.create(first_name:"Michael", last_name:"Choi", dojo_id:1)
+    Ninja.create(first_name:"Tyler", last_name:"Nguyen", dojo_id:1)
+6.5 Ninja.create(first_name:"Chris", last_name:"Kim", dojo_id:2)
+    Ninja.create(first_name:"Mike", last_name:"Hannon", dojo_id:2)
+    Ninja.create(first_name:"Java", last_name:"Monster", dojo_id:2)
+6.6 Ninja.create(first_name:"Jeff", last_name:"Lee", dojo_id:3)
+    Ninja.create(first_name:"David", last_name:"Lu", dojo_id:3)
+    Ninja.create(first_name:"Stephen", last_name:"Curry", dojo_id:3)
+6.7 Dojo.first.ninjas
+    Dojo.last.ninjas.find(1)
+6.8 Dojo.find(2).destroy
+6.9 Dojo.second.ninjas.select("first_name").order(first_name: :desc)

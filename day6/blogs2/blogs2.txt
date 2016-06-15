@@ -1,0 +1,34 @@
+1. User.create([{first_name:"Kyungbae", last_name:"Kim", email_address:"kb@kb.com"}, {first_name:"Michael", last_name:"Choi", email_address:"mc@mc.com"}, {first_name:"Tyler", last_name:"Nguyen", email_address:"tyler@tyler.com"}, {first_name:"Mike", last_name:"Hannon", email_address:"mike@mike.com"}, {first_name:"David", last_name:"Cannady", email_address:"david@david.com"}])
+
+2. Blog.create([{name:"Blog1", description:"Description1"}, {name:"Blog2", description:"Description2"}, {name:"Blog3", description:"Description3"}, {name:"Blog4", description:"Description4"}, {name:"Blog5", description:"Description5"},])
+
+3. Owner.create([{user:User.find(1), blog:Blog.find(1)}, {user:User.find(1), blog:Blog.find(2)}, {user:User.find(1), blog:Blog.find(3)}])
+
+4. Owner.create(user:User.find(2), blog:Blog.find(4))
+
+5. Owner.create(user:User.last, blog:Blog.find(5))
+
+6. Owner.create([{user:User.find(3), blog:Blog.find(1)}, {user:User.find(3), blog:Blog.find(2)}, {user:User.find(3), blog:Blog.find(3)}, {user:User.find(3), blog:Blog.find(4)}, {user:User.find(3), blog:Blog.find(5)}])
+
+7. Post.create([{user:User.first, blog:Blog.find(2), title:"Post1...", content:"Content1..."}, {user:User.first, blog:Blog.find(2), title:"Post2...", content:"Content2..."}, {user:User.first, blog:Blog.find(2), title:"Post3...", content:"Content3..."}])
+
+8. Post.create([{user:User.find(2), blog:Blog.last, title:"Post1...", content:"Content1..."}, {user:User.find(2), blog:Blog.last, title:"Post2...", content:"Content2..."}, {user:User.find(2), blog:Blog.last, title:"Post3...", content:"Content3..."}, {user:User.find(2), blog:Blog.last, title:"Post4...", content:"Content4..."}, {user:User.find(2), blog:Blog.last, title:"Post5...", content:"Content5..."}])
+
+9. Post.create([{user:User.find(3), blog:Blog.last, title:"Post1...", content:"Content1..."}, {user:User.find(3), blog:Blog.last, title:"Post2...", content:"Content2..."}, {user:User.find(3), blog:Blog.last, title:"Post3...", content:"Content3..."}, {user:User.find(3), blog:Blog.last, title:"Post4...", content:"Content4..."}, {user:User.find(3), blog:Blog.last, title:"Post5...", content:"Content5..."}, {user:User.find(3), blog:Blog.last, title:"Post6...", content:"Content6..."}, {user:User.find(3), blog:Blog.last, title:"Post7...", content:"Content7..."}])
+
+10. Message.create([{user:User.find(3), post:Post.first, author:"Billy", message:"This is a test message_1"}, {user:User.find(3), post:Post.first, author:"Kris", message:"This is a test message_2"}])
+Message.create([{user:User.find(3), post:Post.find(2), author:"Stephen", message:"This is a test message_1"}, {user:User.find(3), post:Post.find(2), author:"Lebron", message:"This is a test message_2"}, {user:User.find(3), post:Post.find(2), author:"Pippen", message:"This is a test message_3"}])
+
+11. Message.create([{user:User.find(4), post:Post.last, author:"Noah", message:"This is a test message_1"}, {user:User.find(4), post:Post.last, author:"Enoch", message:"This is a test message_2"}, {user:User.find(4), post:Post.last, author:"Adam", message:"This is a test message_3"}])
+
+12. Post.find(2).update(user:User.last)
+
+13. Post.create([{user:User.find(3), blog:Blog.find(2), title:"Post1...", content:"Content1..."}, {user:User.find(3), blog:Blog.find(4), title:"Post2...", content:"Content2..."}, {user:User.find(3), blog:Blog.last, title:"Post3...", content:"Content3..."}, {user:User.find(3), blog:Blog.find(4), title:"Post4...", content:"Content4..."}, {user:User.find(3), blog:Blog.last, title:"Post5...", content:"Content5..."}, {user:User.find(3), blog:Blog.find(1), title:"Post6...", content:"Content6..."}, {user:User.find(3), blog:Blog.find(1), title:"Post7...", content:"Content7..."}])
+
+14. Post.find(2).update(content:"This is for another test")
+15. User.find(3).posts
+16. User.find(3).messages
+17. Post.where(blog_id:1).joins(:users)
+18. Message.where(posts.where(blog_id:1))
+19. Owner.where(blog_id:1).joins(:users)
+20. Owner.where(blog_id:1, user_id:1).update(user:User.last)
