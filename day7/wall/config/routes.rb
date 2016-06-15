@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  #Routes look good but they could be changed to be RESTful easily enough~
   post '/login' => 'users#login'
   get '/logout' => 'users#logout'
   get '/' => 'users#index'

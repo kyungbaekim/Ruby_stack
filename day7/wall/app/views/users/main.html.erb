@@ -11,7 +11,9 @@
     <div class='subcontent'>
       <div class='add_post'>
         <form action='/add_post' method='post'>
-          <input name='authenticity_token' type='hidden'>
+          <!-- Corrected Authenticity_token line to proper one -->
+          <!-- Was missing value! -->
+          <input name='authenticity_token' value="<%= form_authenticity_token %>" type='hidden'>
           <textarea name='post'></textarea><br>
           <input type='submit' value='Add post'>
         </form>
@@ -30,7 +32,9 @@
             <div class='sub_display'>
               <form action='/add_comment' method='post'>
                 <input name='post_id' type='hidden' value='<%= post[:post_id] %>'>
-                <input name='authenticity_token' type='hidden'>
+                <!-- Corrected Authenticity_token line to proper one -->
+                <!-- Was missing value! -->
+                <input name='authenticity_token' value="<%= form_authenticity_token %>" type='hidden'>
                 <textarea name='comment'></textarea><br>
                 <input type='submit' value='Add comment'>
               </form>

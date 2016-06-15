@@ -4,7 +4,9 @@
       <p><%= flash[:fail] %></p>
     <% end %>
     <form action='/login' method='post'>
-      <input name='authenticity_token' type='hidden'>
+      <!-- Corrected Authenticity_token line to proper one -->
+      <!-- Was missing value! -->
+      <input name='authenticity_token' value="<%= form_authenticity_token %>" type='hidden'>
       <table class='login'>
         <tr>
           <td>User name:</td>
