@@ -63,9 +63,17 @@ class UsersController < ApplicationController
 
   def add_comment
     # render text: 'comment: ' + params[:comment] + ', post_id: ' + params[:post_id]
-    comment = Comment.create(comment: params[:comment], user_id: session[:user_id], post_id: params[:post_id])
+    
+
+    #Added private method of comment_params to prevent XSS attacks
+    #This same thing could be applied to all forms that relate to model creation 
+    comment = Comment.create(comment_params)
     if comment
       redirect_to url_for(:controller => :users, :action => :main)
     end
   end
+
+  private
+  def comment_params
+    params.require(:c).permit(:comment, :user_id, :post_id)
 end
