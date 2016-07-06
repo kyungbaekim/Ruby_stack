@@ -1,0 +1,97 @@
+<div class='wrapper'>
+  <div class='main'>
+    <div class='lender'>
+      <form action='/lenders' method='post'>
+        <fieldset>
+          <legend>Lender</legend>
+          <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+          <table>
+            <tr>
+              <td>First Name:</td><td><input type='text' name='lender[lfirst_name]'></td>
+            </tr>
+            <tr>
+              <td>Last Name:</td><td><input type='text' name='lender[llast_name]'></td>
+            </tr>
+            <tr>
+              <td>Email:</td><td><input type='text' name='lender[lemail]'></td>
+            </tr>
+            <tr>
+              <td>Password:</td><td><input type='password' name='lender[password]'></td>
+            </tr>
+            <tr>
+              <td colspan='2'>*Password should be at least 8 characters</td>
+            </tr>
+            <tr>
+              <td>Confirm PW:&nbsp;</td><td><input type='password' name='lender[password_confirmation]'></td>
+            </tr>
+            <tr>
+              <td>Money:</td><td><input type='number' min='0' name='lender[lmoney]' step='25' placeholder='$0'></td>
+            </tr>
+            <tr height='50' valign='bottom'>
+              <td colspan='2' align='right'><a href='/login'>Already a memeber?</a>&emsp;<input type='submit' value='Register'</td>
+            </tr>
+            <% if flash[:lender_errors] %>
+              <tr>
+                <td colspan='2'>
+                  <% flash[:lender_errors].each do |error| %>
+                    <span><%= error %></span><br>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+        </fieldset>
+      </form>
+    </div>
+    <div class='borrower'>
+      <form action='/borrowers' method='post'>
+        <fieldset>
+          <legend>Borrower</legend>
+          <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+          <input type='hidden' name='borrower[raised]' value='0'>
+          <table>
+            <tr>
+              <td>First Name:</td><td><input type='text' name='borrower[first_name]'></td>
+            </tr>
+            <tr>
+              <td>Last Name:</td><td><input type='text' name='borrower[last_name]'></td>
+            </tr>
+            <tr>
+              <td>Email:</td><td><input type='text' name='borrower[email]'></td>
+            </tr>
+            <tr>
+              <td>Password:</td><td><input type='password' name='borrower[password]'></td>
+            </tr>
+            <tr>
+              <td colspan='2'>*Password should be at least 8 characters</td>
+            </tr>
+            <tr>
+              <td>Confirm PW:&nbsp;</td><td><input type='password' name='borrower[password_confirmation]'></td>
+            </tr>
+            <tr>
+              <td>Need Money For:</td><td><input type='text' name='borrower[purpose]'></td>
+            </tr>
+            <tr>
+              <td valign='top'>Description:</td><td><textarea name='borrower[description]' cols='21' rows='10'></textarea></td>
+            </tr>
+            <tr>
+              <td>Money:</td><td><input type='number' min='0' name='borrower[money]' step='25' placeholder='$0'></td>
+            </tr>
+            <tr height='50' valign='bottom'>
+              <td colspan='2' align='right'><a href='/login'>Already a memeber?</a>&emsp;<input type='submit' value='Register'</td>
+            </tr>
+            <% if flash[:borrower_errors] %>
+              <tr>
+                <td colspan='2'>
+                  <% flash[:borrower_errors].each do |error| %>
+                    <span><%= error %></span><br>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

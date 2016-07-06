@@ -1,0 +1,23 @@
+<div class='wrapper'>
+  <div class='products'>
+    <p><b>Name:</b>&nbsp;<%= @product.name %></p>
+    <p><b>Description:</b>&nbsp;<%= @product.description %></p>
+    <p><b>Price:</b>&nbsp;$<%= @product.pricing %></p>
+    <p><b>Category:</b>&nbsp;<%= @product.category.name %></p><br>
+    <p><a href='/products/<%= @product.id %>/edit'>Edit</a>&nbsp;|&nbsp;<a href='/products'>Go back</a></p><br>
+  </div>
+  <div class='comments'>
+    <h3>Comment:</h3>
+    <form action='/comments' method='post'>
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <input type='hidden' name='comment[product_id]' value='<%= @product.id %>'>
+      <textarea name='comment[comment]'></textarea><br>
+      <input type='submit' value='Leave comment'>
+    </form><br>
+    <% @comments.each do |c| %>
+      <% if c.product_id == @product.id %>
+        <p><%= c.comment %> - <%= c.created_at.strftime("%m/%d/%Y") %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>

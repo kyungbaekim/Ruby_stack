@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  current_id: 1.5
+  user_id: 
+  auction_id: 
+
+two:
+  current_id: 1.5
+  user_id: 
+  auction_id: 

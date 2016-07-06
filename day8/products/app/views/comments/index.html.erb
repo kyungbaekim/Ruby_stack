@@ -1,0 +1,18 @@
+<div class='wrapper'>
+  <div class='comments'>
+    <h1>All Comments</h1>
+    <table>
+      <tr>
+        <th>Comments</th>
+        <th>Products</th>
+      </tr>
+      <% @comments.each do |c| %>
+        <tr>
+          <td><%= c.comment %></td>
+          <td><%= c.product.name %></td>
+        </tr>
+      <% end %>
+    </table>
+    <br><p><a href='products/'>Go Back</a></p>
+  </div>
+</div>

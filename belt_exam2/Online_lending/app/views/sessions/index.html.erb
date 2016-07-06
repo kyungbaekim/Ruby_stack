@@ -1,0 +1,28 @@
+<div class='wrapper'>
+  <div class='main'>
+    <div class='login'>
+      <form action='/sessions' method='post'>
+        <fieldset>
+          <legend>Login</legend>
+          <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+          <table>
+            <tr>
+              <td>Email:</td><td><input type='text' name='user[email]'></td>
+            </tr>
+            <tr>
+              <td>Password:&nbsp;&nbsp;&nbsp;</td><td><input type='password' name='user[password]'></td>
+            </tr>
+            <tr height='50' valign='bottom'>
+              <td  colspan='2' align='right'><a href='/'>Click here to register</a>&emsp;<input type='submit' value='Login'></td>
+            </tr>
+            <% if flash[:error] %>
+              <tr>
+                <td colspan='2'><span><%= flash[:error] %></span></td>
+              </tr>
+            <% end %>
+          </table>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

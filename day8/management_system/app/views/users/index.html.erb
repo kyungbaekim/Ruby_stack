@@ -1,0 +1,22 @@
+<div class='wrapper'>
+  <div class='users'>
+    <h1>Listing users</h1>
+    <table>
+      <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.first_name %></td>
+          <td><%= user.last_name %></td>
+          <td><%= user.email_address %></td>
+          <td align='center'><a href='/users/<%= user.id %>'>Show</a>&nbsp;|&nbsp;<a href='/users/<%= user.id %>/edit'>Edit</a>&nbsp;|&nbsp;<a href='/users/<%= user.id %>' data-method='delete'>Destory</a></td>
+        </tr>
+      <% end %>
+    </table>
+    <p><a href='/users/new'>New User</a></p>
+  </div>
+</div>

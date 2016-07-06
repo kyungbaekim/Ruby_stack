@@ -1,0 +1,116 @@
+<div class='wrapper'>
+  <div class='main'>
+    <div class='top'>
+      <div class='title'>
+        <h1>Current Auction</h1>
+      </div>
+      <div class='menu'>
+        Welcome, <%= session[:username] %>!&emsp;
+        <a href='/auctions'>Back to Auctions</a>&emsp;
+        <a href='/sessions' data-method='delete'>Logout</a>
+      </div>
+    </div>
+    <div class='auction_info'>
+      <table>
+        <tr>
+          <td width=70%><h2><%= @auction.product_name %></h2></td><td width=30% align='right'>Created by: <%= @auction.user.username %></td>
+        </tr>
+        <tr>
+          <td colspan='2'>
+            <% if !@auction.end_date.past? %>
+              Time Remaining: <% TimeDifference.between(@auction.end_date, Time.now).in_general.each do |key, value| %>
+                <% if value != 0 %>
+                  <%= value %><%= key %>
+                <% end %>
+              <% end %>
+            <% else %>
+              Auction ended on <%= @auction.end_date %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan='2'><p><%= @auction.description %></p></td>
+        </tr>
+      </table>
+    </div>
+    <div class='bid'>
+      <hr>
+      <% if !@auction.end_date.past? %>
+        <table>
+          <tr>
+            <td width=50% align='center'>Current Highest Bid:</td><td width=50% align='center'>
+              <% if @bids.last %>
+                By <%= @bids.last.user.username %>
+              <% else %>
+                No one made a bid yet. Be the first one!
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td align='center' valign='top'>
+              <% if @bids.last %>
+                <%= number_to_currency(@bids.last.bid) %>
+              <% else %>
+                <%= number_to_currency(@auction.start_bid) %>
+              <% end %>
+            </td>
+            <td align='center'>
+              <form action='/bids' method='post'>
+                <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+                <input type='hidden' name='bid[user_id]' value='<%= session[:user_id] %>'>
+                <input type='hidden' name='bid[auction_id]' value='<%= @auction.id %>'>
+                <input type='text' name='bid[bid]' placeholder='Your bid goes here...'>
+                <input type='submit' value='Place a Bid!!!'>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td></td><td align='center'>
+              <% if flash[:errors] %>
+                <% flash[:errors].each do |error| %>
+                  <span><%= error %></span><br>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      <% else %>
+      <table>
+        <tr>
+          <td width=50% align='center'>Current Highest Bid:</td>
+          <td width=50% align='center'>
+            <% if !@bids.empty? %>
+              Won By <%= @bids.last.user.username %>
+            <% else %>
+              No one made a bid.
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td align='center' valign='top'>
+            <% if !@bids.empty? %>
+              <%= number_to_currency(@bids.last.bid) %>
+            <% else %>
+              No one made a bid. The staring price was <%= number_to_currency(@auction.start_bid) %>
+            <% end %>
+          </td>
+          <td align='center'>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <% if (session[:user_id] == @auction.user_id) &&  %>
+              <form action='/users/<%= session[:user_id] %>' method='post'>
+                <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+
+                <input type='submit' value='Sell This Product!!!'>
+              </form>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

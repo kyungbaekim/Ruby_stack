@@ -25,10 +25,10 @@ Message.create([{user:User.find(3), post:Post.find(2), author:"Stephen", message
 
 13. Post.create([{user:User.find(3), blog:Blog.find(2), title:"Post1...", content:"Content1..."}, {user:User.find(3), blog:Blog.find(4), title:"Post2...", content:"Content2..."}, {user:User.find(3), blog:Blog.last, title:"Post3...", content:"Content3..."}, {user:User.find(3), blog:Blog.find(4), title:"Post4...", content:"Content4..."}, {user:User.find(3), blog:Blog.last, title:"Post5...", content:"Content5..."}, {user:User.find(3), blog:Blog.find(1), title:"Post6...", content:"Content6..."}, {user:User.find(3), blog:Blog.find(1), title:"Post7...", content:"Content7..."}])
 
-14. Post.find(2).update(content:"This is for another test")
+14. User.find(3).blogs
 15. User.find(3).posts
 16. User.find(3).messages
-17. Post.where(blog_id:1).joins(:users)
-18. Message.where(posts.where(blog_id:1))
-19. Owner.where(blog_id:1).joins(:users)
+17. Post.select("*").where(blog_id:1).joins(:user)
+18. Blog.first.messages.select("*").joins(:user)
+19. Owner.select("*").where(blog_id:1).joins(:user)
 20. Owner.where(blog_id:1, user_id:1).update(user:User.last)

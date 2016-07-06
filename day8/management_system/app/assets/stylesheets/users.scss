@@ -1,0 +1,17 @@
+.wrapper{
+  width: 100%;
+}
+.users, .display{
+  width: 90%;
+  margin: 0px auto;
+}
+table, td, th{
+  border: 1px solid silver;
+  border-collapse: collapse;
+}
+td, th{
+  padding: 5px;
+}
+table{
+  width: 60%;
+}

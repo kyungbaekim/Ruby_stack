@@ -1,0 +1,80 @@
+<div class='wrapper'>
+  <div class='main'>
+    <div class='top'>
+      <div class='welcome'>
+        <table>
+          <tr>
+            <td align='right'>Name: <%= session[:lender_name] %></td>
+          </tr>
+          <tr>
+            <td align='right'>Account Balance: <b>$<%= @lender.lmoney %></b></td>
+          </tr>
+        </table>
+      </div>
+      <div class='menu'>
+        <a href='/sessions' data-method='delete'>Logout</a>
+      </div>
+    </div>
+    <div class='in_need'>
+      <h2>List of people in need of help:</h2>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Need money for</th>
+          <th>Reason for loan</th>
+          <th>Amount needed</th>
+          <th>Amount raised</th>
+          <th>Action</th>
+        </tr>
+        <% @in_needs.each do |i| %>
+        <tr>
+          <td><%= i.full_name %></td>
+          <td><%= i.purpose %></td>
+          <td><%= i.description %></td>
+          <td>$<%= i.money %></td>
+          <td>$<%= i.raised %></td>
+          <td>
+            <form action='/histories/<%= i.id %>' method='post'>
+              <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+              <input type='hidden' value='<%= i.id %>' name='history[borrower_id]'>
+              <input type='hidden' value='<%= session[:lender_id] %>' name='history[lender_id]'>
+              <input type='number' min='0' name='history[amount]' step='25' placeholder='$0' width='50'>
+              <input type='submit' value='Lend'>
+            </form>
+          </td>
+        </tr>
+        <% end %>
+        <% if flash[:error] %>
+          <tr>
+            <td colspan='2'>
+              <%= flash[:error] %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class='lend_to'>
+      <h2>List of people you lend money to:</h2>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Need money for</th>
+          <th>Reason for loan</th>
+          <th>Amount needed</th>
+          <th>Amount raised</th>
+          <th>Amount lent</th>
+        </tr>
+        <% @borrowed.each do |b| %>
+        <tr>
+          <td><%= b.borrower.full_name %></td>
+          <td><%= b.borrower.purpose %></td>
+          <td><%= b.borrower.description %></td>
+          <td>$<%= b.borrower.money %></td>
+          <td>$<%= b.borrower.raised %></td>
+          <td>$<%= b.amount_sum %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

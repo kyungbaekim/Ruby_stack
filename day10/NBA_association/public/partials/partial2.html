@@ -1,0 +1,32 @@
+<div>
+  <h2>NBA Teams</h2>
+  <div class='search'>
+    Search: <input type='text' ng-model='search.name'>
+  </div>
+  <div class='list'>
+    <table>
+      <tr>
+        <th>NBA Team</th>
+        <th>Action</th>
+      </tr>
+      <tr ng-repeat='team in teams | filter: search'>
+        <td>{{ team.name }}</td>
+        <td><button ng-click="deleteTeam(team.id)">Delete</button></td>
+      </tr>
+    </table>
+  </div>
+  <div class='add_team'>
+    <h2>Add a new team</h2>
+    <table>
+      <tr>
+        <td>Name:</td>
+        <td><input ng-model="newTeam.team.name" type="text"></td>
+      </tr>
+      <tr>
+        <td colspan='2'><input ng-click="createTeam()" type="submit" value="Create Team"></td>
+      </tr>
+      <tr ng-if="error">
+        <td colspan='2' align='right'><span>The team name {{ error }}</span></td>
+      </tr>
+  </div>
+</div>

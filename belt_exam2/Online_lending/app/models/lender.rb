@@ -1,0 +1,15 @@
+class Lender < ActiveRecord::Base
+  # attr_accessor :password
+
+  has_secure_password
+  has_many :histories
+  has_many :borrowers, through: :histories
+  validates :lfirst_name, :llast_name, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: 'only allows letters' }
+  validates :lmoney, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :lemail, presence: true, uniqueness: { :case_sensitive => false }, :email_format => {:message => 'is in invalid format'}
+  validates :password, presence: true, confirmation: true, length: { minimum: 8 }, on: :update, allow_blank: true;
+
+  def full_name
+    self.lfirst_name + " " + self.llast_name
+  end
+end

@@ -1,0 +1,24 @@
+<div class='wrapper'>
+  <div class='products'>
+    <h1>Listing products</h1>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Actions</th>
+      </tr>
+      <% @products.each do |p| %>
+        <tr>
+          <td><%= p.name %></td>
+          <td><%= p.description %></td>
+          <td align='center'>$<%= p.pricing %></td>
+          <td align='center'><%= p.category.name %></td>
+          <td align='center'><a href='/products/<%= p.id %>'>Show</a>&nbsp;|&nbsp;<a href='/products/<%= p.id %>/edit'>Edit</a>&nbsp;|&nbsp;<a href='/products/<%= p.id %>' data-method='delete'>Destory</a></td>
+        </tr>
+      <% end %>
+    </table>
+    <p><a href='products/new'>New Product</a></p>
+  </div>
+</div>

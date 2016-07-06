@@ -1,0 +1,49 @@
+<div class='wrapper'>
+  <div class='main'>
+    <div class='top'>
+      <div class='title'>
+        <h1>New Auction</h1>
+      </div>
+      <div class='menu'>
+        Welcome, <%= session[:username] %>!&emsp;
+        <a href='/auctions'>Back to Auctions</a>&emsp;
+        <a href='/sessions' data-method='delete'>Logout</a>
+      </div>
+    </div>
+    <div class='add_auction'>
+      <form action='/auctions' method='post'>
+        <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+        <input type='hidden' name='auction[user_id]' value='<%= session[:user_id] %>'>
+        <table>
+          <tr>
+            <td>Product Name:</td><td><input type='text' name='auction[product_name]'></td>
+          </tr>
+          <tr>
+            <td valign='top'>Description:</td><td><textarea cols=30 rows=5 name='auction[description]'></textarea></td>
+          </tr>
+          <tr>
+            <td>Starting Bid:</td><td><input type='text' name='auction[start_bid]'></td>
+          </tr>
+          <tr>
+            <td>Reserve Price:</td><td><input type='text' name='auction[reserve_price]'></td>
+          </tr>
+          <tr>
+            <td>End Date:</td><td><input type='date' name='auction[end_date]'></td>
+          </tr>
+          <tr>
+            <td colspan='2'><input type='submit' value='Create Auction'></td>
+          </tr>
+          <% if flash[:errors] %>
+            <tr>
+              <td colspan='2'>
+                <% flash[:errors].each do |error| %>
+                  <span><%= error %></span><br>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>

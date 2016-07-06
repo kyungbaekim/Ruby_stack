@@ -1,0 +1,31 @@
+<div class='wrapper'>
+  <% if flash[:failed] %>
+    <font color='red'><%= flash[:failed] %></font>
+  <% end %>
+  <div class='form'>
+    <form action='/ninjas/new' method='post'>
+      <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+      <table>
+        <tr>
+          <td>Ninja Name*:</td><td><input type='text' name='ninja[name]'></td>
+        </tr>
+        <% if flash[:name] %>
+          <tr>
+            <td></td><td><font color='red'>Name <%= flash[:name][0] %></font></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td>Ninja Description*:</td><td><textarea name='ninja[description]'></textarea></td>
+        </tr>
+        <% if flash[:description] %>
+          <tr>
+            <td></td><td><font color='red'>Description <%= flash[:description][0] %></font></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td colspan='2'><input type='submit' value='Submit'></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>

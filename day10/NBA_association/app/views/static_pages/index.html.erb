@@ -1,0 +1,14 @@
+<div class='wrapper' ng-app="nbaApp">
+  <div class='top'>
+    <div class='welcome'>
+      <h1>Welcome <%= session[:user_name] %></h1>
+    </div>
+    <div class='logout'>
+      <a href='/logout'><button>Log out</button></a>
+    </div>
+  </div>
+  <hr>
+  <h1>NBA Information:</h1>
+  <a href="#/partial1">Awesome Players</a> | <a href="#/partial2">Teams</a> | <a href="#/partial3">Associations</a><br><br><br>
+  <div ng-view=""></div>
+</div>

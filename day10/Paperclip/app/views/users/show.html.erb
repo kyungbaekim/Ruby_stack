@@ -1,0 +1,6 @@
+<h2>Photo of the Day</h2>
+<%= image_tag @user.avatar.url %>
+<p>Uploaded by: <%= @user.name %></p>
+<p><%= @user.description %></p>
+<br>
+<a href='/'>Submit a new photo</a>

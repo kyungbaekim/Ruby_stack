@@ -1,0 +1,19 @@
+<div>
+  <h2>NBA Rosters</h2>
+  <div class='search'>
+    Select a team:
+    <select ng-model='roster'>
+      <option ng-repeat='team in teams' value='{{ team.name }}'>{{ team.name }}</option>
+    </select>
+  </div>
+  <div class='list'>
+    <table>
+      <tr>
+        <th>Players</th>
+      </tr>
+      <tr ng-repeat='player in players | filter: roster'>
+        <td>{{ player.first_name }} {{ player.last_name}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

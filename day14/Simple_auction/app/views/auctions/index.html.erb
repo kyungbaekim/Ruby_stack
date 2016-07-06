@@ -1,0 +1,70 @@
+<div class='wrapper'>
+  <div class='main'>
+    <div class='top'>
+      <div class='title'>
+        <h1>Current Auctions</h1>
+      </div>
+      <div class='menu'>
+        Welcome, <%= session[:username] %>!&emsp;
+        <a href='/auctions/new'>New Auction</a>&emsp;
+        <a href='/sessions' data-method='delete'>Logout</a>
+      </div>
+    </div>
+    <div class='auction_list'>
+      <table>
+        <tr>
+          <th>Product</th>
+          <th>Seller</th>
+          <th>Top Bid</th>
+          <th>Time Remaining</th>
+          <th>Action/Status</th>
+        </tr>
+        <% @auctions.each do |auction| %>
+          <tr>
+            <td><a href='/auctions/<%= auction.id %>'><%= auction.product_name %></a></td>
+            <td><%= auction.user.first_name %></td>
+            <td>
+              <% if auction.top_bid == 0 %>
+                <%= number_to_currency(auction.start_bid) %>
+              <% else %>
+                <%= number_to_currency(auction.top_bid) %>
+              <% end %>
+            </td>
+            <td>
+              <% if auction.end_date.today? || auction.end_date.future? %>
+                <% TimeDifference.between(auction.end_date, Time.now).in_general.each do |key, value| %>
+                  <% if value != 0 %>
+                    <%= value %><%= key %>
+                  <% end %>
+                <% end %>
+              <% else %>
+                -- Auction ended --
+              <% end %>
+            </td>
+            <td>
+              <% if auction.user.id == session[:user_id] %>
+                <a href='/auctions/<%= auction.id %>' data-method='delete'><button>Delete</button></a>
+                <% if !auction.end_date.future? %>
+                  &nbsp;<a href='/auctions/<%= auction.id %>'><button>View Result</button></a>
+                <% end %>
+              <% else %>
+                <% if auction.end_date.future? %>
+                  <a href='/auctions/<%= auction.id %>'><button>Bid</button></a>
+                <% else %>
+                  <a href='/auctions/<%= auction.id %>'><button>View Result</button></a>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class='balance'>
+      <table>
+        <tr>
+          <td align='right'>Your Current Wallet: <%= number_to_currency(@user.wallet) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

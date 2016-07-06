@@ -1,0 +1,62 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.wrapper{
+  width: 100%;
+}
+
+.main{
+  width: 80%;
+  margin: 0px auto;
+}
+
+.borrower, .lender{
+  display: inline-block;
+}
+
+.lender{
+  width: 42%;
+  margin-right: 20px;
+}
+
+.login{
+  width: 40%;
+  margin: 0px auto;
+}
+
+span{
+  font-size: 0.8em;
+  color: red;
+}
+
+.welcome, .menu{
+  display: inline-block;
+  vertical-align: top;
+  width: 49%;
+}
+
+.menu{
+  text-align: right;
+}
+
+th, td{
+  padding: 5px;
+}
+
+th{
+  background-color: lightgray;
+}
+
+.in_need table, .in_need th, .in_need tr, .in_need td{
+  border: 1px solid silver;
+}
+
+.in_need table, .lend_to table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.lend_to table, .lend_to th, .lend_to tr, .lend_to td{
+  border: 1px solid silver;
+}

@@ -1,0 +1,49 @@
+// Place all the styles related to the static_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.wrapper{
+  width: 70%;
+  margin: 0px auto;
+}
+
+.list table, .list tr, .list th, .list td{
+  border: 1px solid silver;
+  border-collapse: collapse;
+}
+
+.search input{
+  margin-bottom: 4px;
+}
+
+.list, .add_player, .add_team{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.list{
+  margin-right: 20px;
+}
+
+td{
+  padding: 2px;
+}
+
+.search{
+  margin-bottom: 20px;
+}
+
+h2{
+  margin-top: 0px;
+}
+span{
+  color: red;
+}
+
+.welcome, .logout{
+  display: inline-block;
+  width: 49%;
+}
+
+.logout{
+  text-align: right;
+}

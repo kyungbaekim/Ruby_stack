@@ -1,0 +1,38 @@
+<div>
+  <h2>NBA Players</h2>
+  <div class='search'>
+    Search By:&emsp;
+    Any: <input type='text' ng-model='searchText'>
+    First Name: <input type='text' ng-model='search.first_name'>
+    Last Name:<input type='text' ng-model='search.last_name'>
+    Team: <input type='text' ng-model='search.team_name'>
+  </div>
+  <div class='table'>
+    <table>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>NBA Team</th>
+        <th>Action</th>
+      </tr>
+      <tr ng-repeat='player in players | filter: search'>
+        <td>{{ player.first_name }}</td>
+        <td>{{ player.last_name }}</td>
+        <td>{{ player.team }}</td>
+        <td><button ng-click="deletePlayer(player.id)">Delete Player</button></td>
+      </tr>
+    </table>
+  </div>
+  <div class='add_player'>
+    <h2>Add a new player</h2>
+  <p>
+    <label>First Name:</label>
+    <input ng-model="newPlayer.player.first_name" type="text">
+  </p>
+  <p>
+    <label>Last Name:</label>
+    <input ng-model="newPlayer.player.last_name" type="text">
+  </p>
+    <input ng-click="createPlayer()" type="submit" value="Create Player">
+  </div>
+</div>

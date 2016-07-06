@@ -1,0 +1,26 @@
+<div class='wrapper'>
+  <div class='session_form'>
+    <form action='/sessions' method='post'>
+      <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+      <table>
+        <tr>
+          <td>Email</td><td><input type='text' name='session[email]'></td>
+        </tr>
+        <tr>
+          <td>Password</td><td><input type='password' name='session[password]'></td>
+        </tr>
+        <tr>
+          <td colspan='2' align='right'>
+            <a href='/'><button>Register</button></a>&nbsp;
+            <input type='submit' value='Log In'>
+          </td>
+        </tr>
+        <% if flash[:error] %>
+          <tr>
+            <td colspan='2'><span><%= flash[:error] %></span></td>
+          </tr>
+        <% end %>
+      </table>
+    </form>
+  </div>
+</div>

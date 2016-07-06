@@ -1,0 +1,14 @@
+<div class='wrapper'>
+  <div class='users'>
+    <h1>New User</h1>
+    <form action='/users' method='post'>
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <p>First name<br><input type='text' name='user[first_name]'></p>
+      <p>Last name<br><input type='text' name='user[last_name]'></p>
+      <p>Email<br><input type='text' name='user[email_address]'></p>
+      <p>Password<br><input type='password' name='user[password]'></p>
+      <input type='submit' value='Create'>
+    </form>
+    <p><a href='/users'>Go back</a></p>
+  </div>
+</div>

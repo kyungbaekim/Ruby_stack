@@ -1,0 +1,8 @@
+<div class='wrapper'>
+  <div class='display'>
+    <p><b>First name:</b> <%= @user.first_name %></p>
+    <p><b>Last name:</b> <%= @user.last_name %></p>
+    <p><b>Email:</b> <%= @user.email_address %></p>
+    <a href='/users/<%= @user.id %>/edit'>Edit</a>&nbsp;|&nbsp;<a href='/users'>Back</a>
+  </div>
+</div>

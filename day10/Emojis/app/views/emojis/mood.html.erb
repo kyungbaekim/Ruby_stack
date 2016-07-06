@@ -1,0 +1,9 @@
+<div>
+  <% if @emoji.key?(@mood) %>
+    You feel... <img src='<%= @emoji[@mood] %>' alt='emoji'> today!
+  <% else %>
+    I'm sorry. I could not recognize your mood. Please try again.
+  <% end %>
+  <br><br>
+  <a href='/'>Enter another mood</a>
+</div>

@@ -1,0 +1,14 @@
+<% content_for :title do %>
+  Dojo Seattle
+<% end %>
+<% content_for :jquery_code do %>
+//note we still have to include script tags, but we don't have to cite the source
+<script type='text/javascript'>
+ $(document).ready(function(){
+  $('h1').fadeOut(500);
+ });
+</script>
+<% end %>
+<% content_for :body do %>
+  <h1>Hello.  This is the body content for 'Dojo#seattle' </h1>
+<% end %>

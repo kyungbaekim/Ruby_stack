@@ -1,0 +1,45 @@
+<% content_for :title do %>
+  Dojo Homepage
+<% end %>
+//note that we still have to include script tags, but we don't have to cite the source
+<% content_for :jquery_code do %>
+<script type='text/javascript'>
+ $(document).ready(function(){
+  $('form').submit(function(){
+   $.post($(this).attr('action'), $(this).serialize(),
+    function(data){
+     console.log(data);
+    });
+   return false;
+  });
+ });
+</script>
+<% end %>
+<% content_for :body do %>
+  <h1>Hello.  This is the body content for 'Dojo#index' </h1>
+  <form action="/home" method="post">
+   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+   <input type="text" name="name" placeholder="Name" />
+   <input type="text" name="email" placeholder="Email" />
+   <input type='submit' value="Submit" />
+  </form>
+<% end %>
+<!--
+<% content_for :jquery do %>
+   console.log('I am here!');
+   $('body').append('hello!');
+<% end %>
+<% content_for :left_column do %>
+   <h2>Left Column Information</h2>
+   <p>Sample Data...</p>
+   <img src='awesome.png' />
+<% end %>
+<% content_for :right_column do %>
+   <h1>Main Content</h1>
+   <p>Paragraph ...</p>
+   <p>Another Paragraph</p>
+<% end %>
+<% content_for :head do %>
+   <title>Welcome to my page!</title>
+   <meta name='description' content='Description. This shows up in the search result' />
+<% end %> -->

@@ -1,0 +1,37 @@
+<div class='wrapper'>
+  <div class='user_form'>
+    <form action='/users' method='post'>
+      <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+      <table>
+        <tr>
+          <td>Email</td><td><input type='text' name='user[email]'></td>
+        </tr>
+        <tr>
+          <td>Name</td><td><input type='text' name='user[name]'></td>
+        </tr>
+        <tr>
+          <td>Password</td><td><input type='password' name='user[password]'></td>
+        </tr>
+        <tr>
+          <td>Password Confirmation</td><td><input type='password' name='user[password_confirmation]'></td>
+        </tr>
+        <tr>
+          <td colspan='2' align='right'>
+            <a href='login'><button>Log in</button></a>&nbsp;
+            <input type='submit' value='Join'>
+          </td>
+        </tr>
+        <% if flash[:errors] %>
+          <tr>
+            <td colspan='2'><span>
+              Email: <%= flash[:errors]["email"][0] %><br>
+              Name: <%= flash[:errors]["name"][0] %><br>
+              Password: <%= flash[:errors]["password"][0] %><br>
+              Password Confirmation: <%= flash[:errors]["password_confirmation"][0] %><br>
+            </span></td>
+          </tr>
+        <% end %>
+      </table>
+    </form>
+  </div>
+</div>

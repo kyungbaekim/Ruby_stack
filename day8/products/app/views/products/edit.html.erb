@@ -1,0 +1,25 @@
+<div class='wrapper'>
+  <div class='products'>
+    <h1>Editing product</h1>
+    <form action='/products/<%= @product.id %>' method='post'>
+      <input type="hidden" name="_method" value="patch">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <p>Category<br>
+        <select name='product[category_id]'>
+          <% @categories.each do |c| %>
+            <% if c.id == @product.category_id %>
+              <option value='<%= c.id %>' selected><%= c.name %></option>
+            <% else %>
+              <option value='<%= c.id %>'><%= c.name %></option>
+            <% end %>
+          <% end %>
+        </select>
+      </p>
+      <p>Name<br><input type='text' name='product[name]' value='<%= @product.name %>'></p>
+      <p>Description<br><input type='text' name='product[description]' value='<%= @product.description %>'></p>
+      <p>Price<br><input type='text' name='product[pricing]' value='<%= @product.pricing %>'></p>
+      <input type='submit' value='Update'>
+    </form>
+    <p><a href='/products/<%= @product.id %>'>Show</a>&nbsp;|&nbsp;<a href='/products'>Go back</a></p>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+rails g model Comment comment:string commentable:references{polymorphic}
+
+Add below line to blog, message, post, user.rb
+=> has_many :comments, :as => :commentable
+
+Create comments
+1. Comment.new(comment: "hello", commentable_id: User.first.id, commentable_type: User.first.class.name).save
+2. Comment.new(comment: "hello", commentable_id: Blog.first.id, commentable_type: Blog.first.class.name).save
+3. Comment.new(comment: "hello", commentable_id: Message.first.id, commentable_type: Message.first.class.name).save
+4. Comment.new(comment: "hello", commentable_id: Post.first.id, commentable_type: Post.first.class.name).save
+
+Update comments
+1. Comment.first.update(comment: "update", commentable_id: Post.second.id, commentable_type: Post.second.class.name)
+
+Delete comments
+1. Comment.first.delete

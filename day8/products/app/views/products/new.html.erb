@@ -1,0 +1,21 @@
+<div class='wrapper'>
+  <div class='products'>
+    <h1>New product</h1>
+    <form action='/products' method='post'>
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <p>Category<br>
+        <select name='product[category_id]'>
+          <option selected>Pick category</option>
+          <% @categories.each do |c| %>
+            <option value='<%= c.id %>'><%= c.name %></option>
+          <% end %>
+        </select>
+      </p>
+      <p>Name<br><input type='text' name='product[name]'></p>
+      <p>Description<br><input type='text' name='product[description]'></p>
+      <p>Price<br><input type='text' name='product[pricing]'></p>
+      <input type='submit' value='Create'>
+    </form>
+    <p><a href='/products'>Go back</a></p>
+  </div>
+</div>

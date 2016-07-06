@@ -1,0 +1,62 @@
+.wrapper{
+  width: 100%;
+}
+.main{
+  width: 70%;
+  margin: 0px auto;
+}
+.register, .login{
+  display: inline-block;
+}
+.register{
+  width: 46%;
+  margin-right: 20px;
+}
+th, td{
+  padding: 5px;
+}
+th{
+  background-color: lightgray;
+}
+fieldset{
+  width: 85%;
+  margin: 0px auto;
+}
+span{
+  color: red;
+}
+.title, .menu{
+  display: inline-block;
+  width: 49%;
+}
+.menu{
+  text-align: right;
+}
+.auction_list table, .auction_list th, .auction_list tr, .auction_list td{
+  border: 1px solid silver;
+}
+.auction_list table{
+  width: 80%;
+  border-collapse: collapse;
+  margin: 0px auto;
+}
+.auction_list td{
+  text-align: center;
+}
+.balance{
+  margin-top: 30px;
+}
+.balance table, .auction_info table, .bid table{
+  width: 80%;
+  margin: 0px auto;
+}
+h2{
+  margin: 0px;
+}
+span .description{
+  margin: 20px 0px;
+}
+hr{
+  width: 80%;
+  margin: 20px auto;
+}

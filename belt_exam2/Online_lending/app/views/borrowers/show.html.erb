@@ -1,0 +1,39 @@
+<div class='wrapper'>
+  <div class='main'>
+    <div class='top'>
+      <div class='welcome'>
+        <table>
+          <tr>
+            <td align='right'>Name: <%= session[:borrower_name] %></td>
+          </tr>
+          <tr>
+            <td align='right'>Amount Need: <b>$<%= @borrower.money %></b></td>
+          </tr>
+          <tr>
+            <td align='right'>Amount Raised: <b>$<%= @borrower.raised %></b></td>
+          </tr>
+        </table>
+      </div>
+      <div class='menu'>
+        <a href='/sessions' data-method='delete'>Logout</a>
+      </div>
+    </div>
+    <div class='in_need'>
+      <h2>List of people who lend you money:</h2>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Amount Lent</th>
+        </tr>
+        <% @lenders.each do |l| %>
+        <tr>
+          <td><%= l.lender.full_name %></td>
+          <td><%= l.lender.lemail %></td>
+          <td>$<%= l.amount_sum %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
